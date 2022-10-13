@@ -50,7 +50,7 @@ jobs:
 
       - name: Chromatic UI Tests - Latest
         uses: chromaui/action@v1
-        if: github.ref == 'refs/heads/latest' # Only run on latest branch
+        if: github.ref == 'refs/heads/latest' && github.event.pull_request.head.repo.full_name == 'bbc/simorgh' # Only run on latest branch
         with:
           token: ${{ secrets.SIMORGH_DEV_STORYBOOK_RELEASE }}
           projectToken: ${{ secrets.CHROMATIC_APP_CODE }}
