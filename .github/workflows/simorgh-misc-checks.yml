@@ -31,6 +31,7 @@ jobs:
       - name: Cache Node Modules
         id: cache
         uses: actions/cache@v2
+        if: github.ref == 'refs/heads/latest' && github.event.pull_request.head.repo.full_name == 'bbc/simorgh' # Only run on latest branch
         with:
           path: node_modules
           key: node-modules-${{ hashFiles('yarn.lock') }}
